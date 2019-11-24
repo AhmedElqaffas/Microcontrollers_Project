@@ -14,18 +14,16 @@
               The function transits the system to a new state based on the character pressed on the keypad
 */
 int transit(char pressed){
-  
-  char correct[] = {'1','8','E','E'}; // This array will be used to contain the password that the user configures
-  //for example: char correct[] = getCorrectPassword() , wher getCorrectPassword() returns a char array containing the characters of the correct password in correct order
+  int length = getPasswordLength(); // The number of characters of the password
 
-
-  static volatile int current = 0; // Indicates which character in correct[] is the program expecting (first character, second character, etc...)
+  static volatile int current = 0; // Indicates which character in the password is the program expecting (first character, second character, etc...)
   static volatile int wrong = 0;
   // The maximum length of password is 15 characters
   // If the user enters a wrong character, the 'wrong' variable is incremented
   // Once 'wrong' is greater than 0, it will keep incrementing with each press until the user resets and starts entering characters from the start or reaches the-
   // maximum length of 15 characters and an alarm will be activated
   if(pressed=='F'){ // Reset if # is pressed
+    clearScreen();
     wrong = 0;
     current = 0;
     return CLOSED;
@@ -40,16 +38,12 @@ int transit(char pressed){
     return CLOSED;
   }
   
-  if(pressed == correct[current]){ // If the pressed key is the one expected
-    if(current == (sizeof(correct) / sizeof(char))-1){ // If the whole password is now entered correctly, the door should be opened and the "current" reset to zero
-                                             //  sizeof(a) returns the size (bytes) used by the array 
-                                             //  sizeof(char) returns the size (bytes) of char data type
-                                              // Dividing them indicates the length of our array (elements)
+  if(pressed == EEPROM_Read(current+1)){ // If the pressed key is the one expected
+    if(current == length -1){ // If the whole password is now entered correctly, the door should be opened and the "current" reset to zero
       current = 0;
       return OPEN;
     }
     current++; // The system will now expect the next character in the array to be pressed
-    
     return CLOSED; // The door isn't open yet
   }
   
