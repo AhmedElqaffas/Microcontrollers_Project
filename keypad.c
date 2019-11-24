@@ -3,26 +3,23 @@
 /*
   Description: 
               This function initializes the keypad to work on ports A and E
-              Bits 4 -> 7 on port A are used as ouput bits (keypad columns)
-              Bits 0 -> 3 on port E are used as input bits (keypad rows)
+              Bits 0 -> 3 on port E are used as ouput bits (keypad columns)
+              Bits 2 -> 5 on port A are used as input bits (keypad rows)
 
 */
 void Keypad_Init(){
-     Set_Bit(SYSCTL_RCGCGPIO_R,PORTA); // Enable port A
-     
-     GPIO_PORTA_DEN_R |= 0xF0; // Set digital enable 
-     GPIO_PORTA_DIR_R |= 0xF0; // set 4->7 as output
-     GPIO_PORTA_ODR_R |= 0xF0; // Open Drain Mode
-     GPIO_PORTA_DATA_R |= (0xF0); // Set all output bits as 1 initially 
+     Set_Bit(SYSCTL_RCGCGPIO_R,PORTE); // Enable port E
+     GPIO_PORTE_DEN_R |= (COL0 | COL1 | COL2 | COL3); // Set digital enable 
+     GPIO_PORTE_DIR_R |= (COL0 | COL1 | COL2 | COL3); // set pins E 0->3 as output
+     GPIO_PORTE_ODR_R |= (COL0 | COL1 | COL2 | COL3); // Open Drain Mode
+     GPIO_PORTE_DATA_R |= (COL0 | COL1 | COL2 | COL3); // Set all output bits as 1 initially 
 
      
-     Set_Bit(SYSCTL_RCGCGPIO_R,PORTE); // Enable port E
-     
-     GPIO_PORTE_DEN_R |= 0x0F; // Set digital enable
-     GPIO_PORTE_DIR_R &= ~(0x0F); // Set 0->3 as input
-     GPIO_PORTE_PUR_R |= 0x0F; // Pull up resistor
-     
-    
+     Set_Bit(SYSCTL_RCGCGPIO_R,PORTA); // Enable port A
+     GPIO_PORTA_DEN_R |= (ROW0| ROW1| ROW2| ROW3); // Set digital enable
+     GPIO_PORTA_DIR_R &= ~(ROW0| ROW1| ROW2| ROW3); // Set pins A 2->5 as input
+     GPIO_PORTA_PUR_R |= (ROW0| ROW1| ROW2| ROW3); // Pull up resistor
+         
 }
 
 
@@ -47,27 +44,24 @@ void Keypad_Init(){
 
 */
 char getPressedKey(char keys[][columnsNo]){
+
   char pressedKey;
-
-
   
   for(int c = 0; c< columnsNo; c++){ // Check each column
-
-    Clear_Bit(GPIO_PORTA_DATA_R,c+4); // Set the current column as 0
-                                    // The columns start from bit 4 in port A (according to our setup) So we should add 4 to begin clearing from bits 4 till 7
-    
+    Clear_Bit(GPIO_PORTE_DATA_R,c); // Set the current column as 0
    // Short delay to avoid bouncing effect
-    delay10ms(2);
+    waitTime(20, MILLI_SECONDS_SYSTICK);
     for(int r =0; r<rowsNo;r++){ //Check each input row 
-      if(Get_Bit(GPIO_PORTE_DATA_R,r)==0){ // if it's 0 not 1 (as we are using pull up so 0 means pressed)
+      if(Get_Bit(GPIO_PORTA_DATA_R,r+2)==0){ // if it's 0 not 1 (as we are using pull up so 0 means pressed)                                   
+                                             // Input begins from PORTA 2 so we should add 2
         pressedKey = keys[r][c]; // The pressed switch is the one connecting this row to the current column
-        while(Get_Bit(GPIO_PORTE_DATA_R,r)==0); // Keep stuck until the user removes his finger from the switch
-        Set_Bit(GPIO_PORTA_DATA_R,c+4); // Reset the column to 1 so the next time we enter this functions all the columns will be 1s
+        while(Get_Bit(GPIO_PORTA_DATA_R,r+2)==0); // Keep stuck until the user removes his finger from the switch
+        Set_Bit(GPIO_PORTE_DATA_R,c); // Reset the column to 1 so the next time we enter this functions all the columns will be 1s
         return pressedKey;
       }
     
     }
-    Set_Bit(GPIO_PORTA_DATA_R,c+4); // The switch is not in this column , reset the column to 1
+    Set_Bit(GPIO_PORTE_DATA_R,c); // The switch is not in this column , reset the column to 1
 
 
   }
