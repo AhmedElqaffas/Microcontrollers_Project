@@ -20,13 +20,15 @@ rule browsedata
 
 
 #Build steps
-build Delay.pbi : index Delay.xcl
+build EEPROM.pbi : index EEPROM.xcl
 build keypad.pbi : index keypad.xcl
+build LCD_Driver.pbi : index LCD_Driver.xcl
 build LED.pbi : index LED.xcl
 build main.pbi : index main.xcl
+build sysTick.pbi : index sysTick.xcl
 build Transitions.pbi : index Transitions.xcl
-build PasswordBasedDoor_part0.pbi : link Delay.pbi keypad.pbi
-build PasswordBasedDoor_part1.pbi : link LED.pbi main.pbi
+build PasswordBasedDoor_part0.pbi : link EEPROM.pbi keypad.pbi LCD_Driver.pbi
+build PasswordBasedDoor_part1.pbi : link LED.pbi main.pbi sysTick.pbi
 build PasswordBasedDoor_part2.pbi : link Transitions.pbi
 build PasswordBasedDoor.pbd : link PasswordBasedDoor_part0.pbi PasswordBasedDoor_part1.pbi PasswordBasedDoor_part2.pbi
 build PasswordBasedDoor.pbw : browsedata PasswordBasedDoor.pbd

@@ -1,12 +1,12 @@
-"C:\Users\aelqa\Desktop\Semester 7\Micro\Microcontrollers_Project\sysTick.c"
+"C:\Users\aelqa\Desktop\Semester 7\Micro\Microcontrollers_Project\EEPROM.c"
 -std=c11
 -ferror-limit=0
 -fbracket-depth=512
 -MD
 -MF
-C:\Users\aelqa\Desktop\Semester 7\Micro\Microcontrollers_Project\Debug\Obj\sysTick.pbi.dep
+C:\Users\aelqa\Desktop\Semester 7\Micro\Microcontrollers_Project\Debug\Obj\EEPROM.pbi.dep
 -o
-sysTick.pbi
+EEPROM.pbi
 -I
 C:\Users\aelqa\Desktop\Semester 7\Micro\Microcontrollers_Project
 -I

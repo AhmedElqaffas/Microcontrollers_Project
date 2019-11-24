@@ -1,12 +1,12 @@
-"C:\Users\aelqa\Desktop\Semester 7\Micro\Microcontrollers_Project\sysTick.c"
+"C:\Users\aelqa\Desktop\Semester 7\Micro\Microcontrollers_Project\LCD_Driver.c"
 -std=c11
 -ferror-limit=0
 -fbracket-depth=512
 -MD
 -MF
-C:\Users\aelqa\Desktop\Semester 7\Micro\Microcontrollers_Project\Debug\Obj\sysTick.pbi.dep
+C:\Users\aelqa\Desktop\Semester 7\Micro\Microcontrollers_Project\Debug\Obj\LCD_Driver.pbi.dep
 -o
-sysTick.pbi
+LCD_Driver.pbi
 -I
 C:\Users\aelqa\Desktop\Semester 7\Micro\Microcontrollers_Project
 -I
