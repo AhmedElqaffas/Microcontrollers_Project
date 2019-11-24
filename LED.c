@@ -10,27 +10,13 @@ void LED_Init(){
 
 void openDoor(){
   GPIO_PORTF_DATA_R |= GREEN; // light the green LED
-  
-  // This delay should be replaced with SysTick for accuracy
-  /*int counter = 0;
-  while (counter< 10000000){
-    ++counter;
-  }*/
-  delay10ms(500);
-  
+  waitTime(5,SECONDS_SYSTICK); // Keep it on for 5 seconds
   GPIO_PORTF_DATA_R &= ~GREEN; // turn off the green LED
 }
 
 void activateAlarm(){
-  GPIO_PORTF_DATA_R |= RED; // light the red LED
-  
-  // This delay should be replaced with SysTick for accuracy
-  /*int counter = 0;
-  while (counter< 10000000){
-    ++counter;
-  }*/
-  delay10ms(500);
-  
+  GPIO_PORTF_DATA_R |= RED; // light the red LED 
+  waitTime(5,SECONDS_SYSTICK);// Keep it on for 5 seconds
   GPIO_PORTF_DATA_R &= ~RED; // turn off the green LED
 }
 
