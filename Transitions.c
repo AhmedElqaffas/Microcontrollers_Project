@@ -116,13 +116,13 @@ int newPassState(char pressed){
   //If clear button is pressed then the screen should be cleared
   if(pressed == 'F'){
     clearScreen();
-    lengthNEW = 0;
+    lengthNew = 0;
     return CLEARED;
   } 
   //If * button is pressed then the mode should be changed to type password mode
   if(pressed == 'E'){
     clearScreen();
-    lengthNEW = 0;
+    lengthNew = 0;
     return MODE_CHANGE;
   } 
   //Typing the new password and increasing the length of password on each press

@@ -1,12 +1,12 @@
-"C:\Users\user\Desktop\Microcontrollers_Project\sysTick.c"
+"C:\Users\user\Desktop\Microcontrollers_Project\Modes.c"
 -std=c11
 -ferror-limit=0
 -fbracket-depth=512
 -MD
 -MF
-C:\Users\user\Desktop\Microcontrollers_Project\Debug\Obj\sysTick.pbi.dep
+C:\Users\user\Desktop\Microcontrollers_Project\Debug\Obj\Modes.pbi.dep
 -o
-sysTick.pbi
+Modes.pbi
 -I
 C:\Users\user\Desktop\Microcontrollers_Project
 -I

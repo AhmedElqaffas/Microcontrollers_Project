@@ -1,6 +1,7 @@
 LCD_Driver.pbi: \
-  C:\Users\aelqa\Desktop\Semester\ 7\Micro\Microcontrollers_Project\LCD_Driver.c \
-  C:\Users\aelqa\Desktop\Semester\ 7\Micro\Microcontrollers_Project/LCD_Driver.h \
-  C:\Users\aelqa\Desktop\Semester\ 7\Micro\Microcontrollers_Project/tm4c123gh6pm.h \
-  C:\Users\aelqa\Desktop\Semester\ 7\Micro\Microcontrollers_Project/BIT_CALC.h \
-  C:\Users\aelqa\Desktop\Semester\ 7\Micro\Microcontrollers_Project/sysTick.h
+  C:\Users\user\Desktop\Microcontrollers_Project\LCD_Driver.c \
+  C:\Users\user\Desktop\Microcontrollers_Project/LCD_Driver.h \
+  C:\Users\user\Desktop\Microcontrollers_Project/tm4c123gh6pm.h \
+  C:\Users\user\Desktop\Microcontrollers_Project/BIT_CALC.h \
+  C:\Users\user\Desktop\Microcontrollers_Project/sysTick.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\stdbool.h

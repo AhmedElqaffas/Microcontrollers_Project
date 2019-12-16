@@ -1,4 +1,3 @@
-sysTick.pbi: \
-  C:\Users\aelqa\Desktop\Semester\ 7\Micro\Microcontrollers_Project\sysTick.c \
-  C:\Users\aelqa\Desktop\Semester\ 7\Micro\Microcontrollers_Project/sysTick.h \
-  C:\Users\aelqa\Desktop\Semester\ 7\Micro\Microcontrollers_Project/tm4c123gh6pm.h
+sysTick.pbi: C:\Users\user\Desktop\Microcontrollers_Project\sysTick.c \
+  C:\Users\user\Desktop\Microcontrollers_Project/sysTick.h \
+  C:\Users\user\Desktop\Microcontrollers_Project/tm4c123gh6pm.h

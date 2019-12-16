@@ -40,7 +40,7 @@ char keys[rowsNo][columnsNo]={
   waitTime(2.5 , SECONDS_SYSTICK); //initial message disappears after some time
   clearScreen();
   bool newPassFlag = false; //If the user entered his old password correctly then this boolean's value becomes True
-  
+  bool changePassMode = false; //if true then system is in the change password mode, the system is in the normal mode otherwise
   /* The system operates in two modes:  
 
    Type password mode and change password mode */
@@ -50,9 +50,10 @@ char keys[rowsNo][columnsNo]={
     
     // Enter * (E) to change the password. This is the change password mode.
     if(pressed == 'E'){
+      changePassMode=true; 
       LCD_Write_String("Enter old pass: ", 0 , 0);
       LCD_Write_String(">" , 1 , 0);
-      while(1){
+      while(changePassMode){
         char pressed = getPressedKey(keys);
         if(pressed != 'X')//if a key is pressed 
         { LCD_data('*'); // Display on the LCD that a character is pressed
@@ -66,19 +67,30 @@ char keys[rowsNo][columnsNo]={
         if(pressed != 'X')//if a key is pressed 
         { LCD_data('*'); // Display on the LCD that a character is pressed
           currentState = newPassState(pressed);// Check which state to go to when entering new password
-          if(currentState == CHANGED){ //Old password has been entered correctly
+          if(currentState == CHANGED){ // Old password has been entered correctly
             clearScreen();
-            LCD_Write_String("Password changed. " , 0 , 0); //display success message
-            newPassFlag = false;
+            LCD_Write_String("Password changed" , 0 , 0); // display success message
+            waitTime(2.5 , SECONDS_SYSTICK); // password changed message disappears after some time
+            clearScreen();
+            newPassFlag = false; // Leave the enter new password screen
+            changePassMode = false; // Leave the change password mode and return to normal mode
           }
           
           //If a user presses clear
           
-         // MISSING CODE HERE
+          else if(currentState == CLEARED){ 
+            clearScreen();
+             LCD_Write_String("Enter new pass: ", 0 , 0); //enter new password from the beginning
+            LCD_Write_String(">", 1 , 0); 
+          }
           
         //If a user presses *, the mode should change from change password mode to type password mode
            
-        //MISSING CODE HERE
+        else if(currentState == MODE_CHANGE){ 
+            clearScreen();
+            newPassFlag= false; // Leave the new password screen
+            changePassMode = false; // Leave the change password mode and return to normal mode
+        }  
       }
       }
             
@@ -96,7 +108,11 @@ char keys[rowsNo][columnsNo]={
           }
           //If a user presses *, the mode should change from change password mode to type password mode
            
-        //MISSING CODE HERE
+          else if(currentState == MODE_CHANGE){ 
+            clearScreen();
+            changePassMode = false; // Leaves the change password screen
+            
+      }
         
         }
       }
@@ -111,12 +127,14 @@ char keys[rowsNo][columnsNo]={
      currentState = transit(pressed);  // Check which door state to go to
       // If the user exceeded the maximum range of a password, then he is not authorized to enter.
       if(currentState == ALARM){ 
+        clearScreen();
         LCD_Write_String("Wrong Password" , 0 , 0); // Display error message on the LCD
         activateAlarm(); // Activate the alarm (the function waits for some time and turns the alarm off)
         clearScreen(); // Clear the error message
       }
       // If the correct password is enterd, the door should be opened
       else if(currentState == OPEN){ 
+        clearScreen();
         LCD_Write_String("Door Opened" , 0, 0); // Display a message on the LCD
         openDoor(); // Open the door (the function waits for some time and closes the door again)
         clearScreen(); // Clear the screen again when the door is locked

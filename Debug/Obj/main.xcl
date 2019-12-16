@@ -1,14 +1,14 @@
-"C:\Users\aelqa\Desktop\Semester 7\Micro\Microcontrollers_Project\main.c"
+"C:\Users\user\Desktop\Microcontrollers_Project\main.c"
 -std=c11
 -ferror-limit=0
 -fbracket-depth=512
 -MD
 -MF
-C:\Users\aelqa\Desktop\Semester 7\Micro\Microcontrollers_Project\Debug\Obj\main.pbi.dep
+C:\Users\user\Desktop\Microcontrollers_Project\Debug\Obj\main.pbi.dep
 -o
 main.pbi
 -I
-C:\Users\aelqa\Desktop\Semester 7\Micro\Microcontrollers_Project
+C:\Users\user\Desktop\Microcontrollers_Project
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.3\arm\inc
 -I
