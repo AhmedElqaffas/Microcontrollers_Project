@@ -2,8 +2,11 @@
 #include "BIT_CALC.h"
 #include "EEPROM.h"
 #include "LCD_Driver.h"
+#include "sysTick.h"
+#include "LED.h"
+#include "keypad.h"
 
-#define MAX_PASS_LENGTH 15 // Maimum number of characters in the password 
+#define MAX_PASS_LENGTH 15 // Maximum number of characters in the password 
 #define CLOSED 0
 #define OPEN 1
 #define ALARM 2
@@ -16,3 +19,4 @@
 int transit(char pressed);
 int oldPasswordState(char pressed);
 int newPassState(char pressed);
+void passwordEntryProcess(char keys[rowsNo][columnsNo]);

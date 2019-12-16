@@ -6,4 +6,6 @@ Transitions.pbi: \
   C:\Users\user\Desktop\Microcontrollers_Project/EEPROM.h \
   C:\Users\user\Desktop\Microcontrollers_Project/sysTick.h \
   C:\Users\user\Desktop\Microcontrollers_Project/LCD_Driver.h \
-  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\stdbool.h
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\stdbool.h \
+  C:\Users\user\Desktop\Microcontrollers_Project/LED.h \
+  C:\Users\user\Desktop\Microcontrollers_Project/keypad.h
