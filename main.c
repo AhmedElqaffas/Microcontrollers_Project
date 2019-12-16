@@ -4,6 +4,7 @@
 #include "EEPROM.h"
 #include "sysTick.h"
 #include "LED.h"
+#include "buzzer.h"
 
 int main()
 {
@@ -21,6 +22,7 @@ char keys[rowsNo][columnsNo]={
 
   // Initialize interfaces
   Keypad_Init();
+  buzzer_Init();
   LED_Init();
   EEPROM_Init();
   LCD_Init();
@@ -43,7 +45,7 @@ char keys[rowsNo][columnsNo]={
       // If the user exceeded the maximum range of a password, then he is not authorized to enter.
       if(currentState == ALARM){ 
         write_string("Wrong Password"); // Display error message on the LCD
-        activateAlarm(); // Activate the alarm (the function waits for some time and turns the alarm off)
+        alarm(); // Activate the alarm
         clearScreen(); // Clear the error message
       }
       // If the correct password is enterd, the door should be opened
