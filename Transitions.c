@@ -23,7 +23,9 @@ void passwordEntryProcess(char keys[rowsNo][columnsNo]){
     
     // Enter * (E) to change the password. This is the change password mode.
     if(pressed == 'E'){
-      changePassMode=true; 
+      transit('F'); // clear the pointers in the transit function
+      changePassMode=true;
+      //
       LCD_Write_String("Enter old pass: ", 0 , 0);
       LCD_Write_String(">" , 1 , 0);
       while(changePassMode){
@@ -141,6 +143,15 @@ int transit(char pressed){
   // If the user enters a wrong character, the 'wrong' variable is incremented
   // Once 'wrong' is greater than 0, it will keep incrementing with each press until the user resets and starts entering characters from the start or reaches the-
   // maximum length of 15 characters and an alarm will be activated
+ 
+  
+   if(pressed=='E'){ // change mode and reset pointers if * is pressed
+    clearScreen();
+    wrong = 0;
+    current = 0;
+    return MODE_CHANGE;
+  }
+  
   if(pressed=='F'){ // Reset if # is pressed
     clearScreen();
     wrong = 0;
