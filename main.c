@@ -67,7 +67,7 @@ char keys[rowsNo][columnsNo]={
         if(pressed != 'X')//if a key is pressed 
         { LCD_data('*'); // Display on the LCD that a character is pressed
           currentState = newPassState(pressed);// Check which state to go to when entering new password
-          if(currentState == CHANGED){ // Old password has been entered correctly
+          if(currentState == CHANGED){ // New password has been entered
             clearScreen();
             LCD_Write_String("Password changed" , 0 , 0); // display success message
             waitTime(2.5 , SECONDS_SYSTICK); // password changed message disappears after some time
