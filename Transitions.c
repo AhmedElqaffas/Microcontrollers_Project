@@ -102,7 +102,7 @@ void passwordEntryProcess(char keys[rowsNo][columnsNo]){
       if(currentState == ALARM){ 
         clearScreen();
         LCD_Write_String("Wrong Password" , 0 , 0); // Display error message on the LCD
-        activateAlarm(); // Activate the alarm (the function waits for some time and turns the alarm off)
+        alarm(); // Activate the alarm (the function waits for some time and turns the alarm off)
         clearScreen(); // Clear the error message
       }
       // If the correct password is enterd, the door should be opened
