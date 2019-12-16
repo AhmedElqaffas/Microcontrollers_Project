@@ -1,6 +1,0 @@
-EEPROM.pbi: \
-  C:\Users\aelqa\Desktop\Semester\ 7\Micro\Microcontrollers_Project\EEPROM.c \
-  C:\Users\aelqa\Desktop\Semester\ 7\Micro\Microcontrollers_Project/EEPROM.h \
-  C:\Users\aelqa\Desktop\Semester\ 7\Micro\Microcontrollers_Project/tm4c123gh6pm.h \
-  C:\Users\aelqa\Desktop\Semester\ 7\Micro\Microcontrollers_Project/BIT_CALC.h \
-  C:\Users\aelqa\Desktop\Semester\ 7\Micro\Microcontrollers_Project/sysTick.h
